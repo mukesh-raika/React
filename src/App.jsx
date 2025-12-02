@@ -1,20 +1,20 @@
+import{ useState } from "react"
+import User from "./User"
+function  App(){
+     const [display]=useState(true)
+        return( 
+            <>
+            <h1>Toggle in Rect js</h1>
+            <button onClick={()=>setDsplay(!display)}>Toggle </button>
 
-import { useState } from "react";
-import Counnter from "./Counter";
-function App(){
-    const [fruit,setFruit]=useState();
-    const handleFruit=()=>{
-        setFruit("banana")
-        
-    }
-    return (
-            <div>
-                <h1>state in react js</h1>
-                
-                <h1>{fruit}</h1>
-                <button onClick={handleFruit}>Change Fruit Name</button>
-                <Counnter fruit={fruit}/>
-            </div>
-    )
+            {/* {
+                display ?<h1>Anil sidhu</h1>:null
+            } */}
+           
+    {
+        display && <User/> 
+    }         
+            </>
+) 
 }
-export default App
+export default App;
