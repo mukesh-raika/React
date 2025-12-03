@@ -1,29 +1,14 @@
-import Pass from "./Pass";
-import Wrapper from "./Wrapper"
+import { useState } from "react";
 
 function App() {
-  return (
+  const[val,setVal]=useState("")
+  return(
     <div>
-      <h1>props in React js</h1>
-      <Wrapper color="orange"> 
-          <h1>hello Everyone </h1>
-      </Wrapper >
-
-      <Wrapper color="blue">
-          <h1>hello Anil </h1>
-      </Wrapper >
-
-      <Wrapper>
-          <h2 style={{color:"red"}}>hello shidu </h2>
-      </Wrapper >
-      {/* <Pass name="Anil Sidhu" />
-      <Pass name="bhasker"/>
-
-      <Pass name="bhasker"/>
-      <Pass/>
-      <Pass/> */}
+      <h1>get Input field value</h1>
+      <input type="text" value={val} onChange={(event)=>setVal(event.target.value)} placeholder="Enter User Name"/>
+      <h1>{val}</h1>
+      <button onClick={()=>setVal("")}>Clear value</button>
     </div>
-  );
+  )
 }
-
-export default App
+export default App;
