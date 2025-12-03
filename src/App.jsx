@@ -1,24 +1,31 @@
-import { useState } from "react"
-function App(){
-    const [count,setcount]=useState(0);
-    return(
+import Props from "./Props";
+import Collage from "./collage";
+
+function App() {
+
+    const collages = ["IET", "DU", "IIT", "NIT", "MIT"];
+
+    const users = [
+        { name: "Anil Sidhu", age: 29, email: "anil@test.com" },
+        { name: "Peter", age: 20, email: "peter@test.com" },
+        { name: "Aman", age: 18, email: "aman@test.com" }
+    ];
+
+    return (
         <div>
-        <h1>{count}</h1>
-        <button onClick={()=>setcount(count+1)}> counter</button>
-        {
-            count==0?<h1> condition 0</h1>
-            :count==1?<h1>condition 1</h1>
-            :count==2?<h1>condition 2</h1>
-            :count==3?<h1>condition 3</h1>
-            :count==4?<h1>condition 4</h1>
-           :count==5?<h1>condition 5</h1>
-           :<h1>other condition</h1>
+            <h1>Props in React Js</h1>
 
+            <h2>Collages</h2>
+            {collages.map((collage, index) => (
+                <Collage key={index} name={collage} />
+            ))}
 
-
-
-        }
+            <h2>Users</h2>
+            {users.map((user, index) => (
+                <Props key={index} user={user} />
+            ))}
         </div>
-    )
+    );
 }
-export default App
+
+export default App;
