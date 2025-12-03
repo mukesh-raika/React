@@ -1,31 +1,29 @@
-import Props from "./Props";
-import Collage from "./collage";
+import Pass from "./Pass";
+import Wrapper from "./Wrapper"
 
 function App() {
+  return (
+    <div>
+      <h1>props in React js</h1>
+      <Wrapper color="orange"> 
+          <h1>hello Everyone </h1>
+      </Wrapper >
 
-    const collages = ["IET", "DU", "IIT", "NIT", "MIT"];
+      <Wrapper color="blue">
+          <h1>hello Anil </h1>
+      </Wrapper >
 
-    const users = [
-        { name: "Anil Sidhu", age: 29, email: "anil@test.com" },
-        { name: "Peter", age: 20, email: "peter@test.com" },
-        { name: "Aman", age: 18, email: "aman@test.com" }
-    ];
+      <Wrapper>
+          <h2 style={{color:"red"}}>hello shidu </h2>
+      </Wrapper >
+      {/* <Pass name="Anil Sidhu" />
+      <Pass name="bhasker"/>
 
-    return (
-        <div>
-            <h1>Props in React Js</h1>
-
-            <h2>Collages</h2>
-            {collages.map((collage, index) => (
-                <Collage key={index} name={collage} />
-            ))}
-
-            <h2>Users</h2>
-            {users.map((user, index) => (
-                <Props key={index} user={user} />
-            ))}
-        </div>
-    );
+      <Pass name="bhasker"/>
+      <Pass/>
+      <Pass/> */}
+    </div>
+  );
 }
 
-export default App;
+export default App

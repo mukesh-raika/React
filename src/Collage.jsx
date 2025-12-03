@@ -1,7 +1,7 @@
 function Collage({ name }) {
     return (
         <div>
-            <h3>College Name: {name}</h3>
+            <h3>Collage Name: {name}</h3>
         </div>
     );
 }
