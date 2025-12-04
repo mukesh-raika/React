@@ -1,31 +1,98 @@
 
-import { useState } from "react";
-function App() {
+function App(){
 
-  const [gender,setGender]=useState('male');  
-  const [city,setCity]=useState('delhi');  
-  return(
-    <div>
-      <h1>Handel Radio and Dropdown</h1>
-      <h4>Select Gender</h4>
-      <input type="radio" onChange={(event)=>setGender(event.target.value)} name="gender" value={"male"}  checked={gender=='male'} id="male" />
-      <label htmlFor="male">Male</label>  
-      <input type="radio" onChange={(event)=>setGender(event.target.value)} name="gender" value={"female"} checked={gender=='female'} id="female" />
-       <label htmlFor="female">Female</label>  
-       <h2>selected Gender:{gender}</h2>
-       <br />
-       <br />
-       <h4>Select City</h4>
-       <select onChange={(event)=>setCity(event.target.value)} defaultValue={"delhi"}>
-        <option value="noida">Noida</option>
-        <option value="gurgaon">Gurgaon</option>
-         <option value="delhi">Delhi</option>
-       </select>
-       <h2>selected City:{city}</h2>
+  // const userName=['anil','sam','peter','bruce']; Array
 
+   const userData=[
+    {
+      name:'anil',
+      age:'29', 
+      email:"anil@test.com",
+      id:1
+    },
+     {
+      name:'sam',
+      age:'34', 
+      email:"sam@test.com",
+      id:2
+    },
+     {
+      name:'bruce',
+      age:'50', 
+      email:"bruce@test.com",
+      id:3
+    },
+     {
+      name:'peter',
+      age:'21', 
+      email:"peter@test.com",
+      id:4
+    }
+   ]
+   return (
+      <div>
+        <h1> Loop in JSX with Map Function</h1>
+        <table border="1">
+    <thead>
+      <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Age</td>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        userData.map((user)=>(
+         <tr key={user.id}>
+        <td>{user.id}</td>
+        <td>{user.name}</td>
+        <td>{user.email}</td>  
+        <td>{user.age}</td>
+      </tr>
+        ))
+      }
+    </tbody>
+        </table>
 
-    </div>
-  )
+        <h1>Dummy Data</h1>
+        <table border="1">
+          <thead>
+            <tr>
+              <td>Id</td>
+              <td>Name</td>
+              <td>Email</td>
+              <td>Age</td>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Anil</td>
+              <td>anil@test.com</td>
+              <td>30</td>
+              </tr>
+              <tr>
+              <td>1</td>
+              <td>Anil</td>
+              <td>anil@test.com</td>
+              <td>30</td>
+              </tr>
+              <tr>
+              <td>1</td>
+              <td>Anil</td>
+              <td>anil@test.com</td>
+              <td>30</td>
+              </tr>
+              <tr>
+              <td>1</td>
+              <td>Anil</td> 
+              <td>anil@test.com</td>
+              <td>30</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+   )
 }
-
 export default App;
