@@ -9,7 +9,7 @@ function Checkbox(){
      console.log(event.target.value,event.target.checked);
      if(event.target.checked){
       setCheckbox([...chakbox, event.target.value])
-     }else {
+     }else { 
     setCheckbox(chakbox.filter((item) => item !== event.target.value));
 }
 
