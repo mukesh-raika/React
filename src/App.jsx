@@ -1,89 +1,33 @@
-import College from "./College";
+import { useEffect, useState } from "react";
 
-function App(){
+function App() {
 
-  const collegeData=[
-    {
-      name:"IET Alwar",
-      city:"Alwar",
-      Website:"www.iet.com",
-      student:[ 
-        {
-          name:"Anil sidhu",
-          age:'29',
-          email:"anil@test.com"
-        },
-         {
-          name:"peter",
-          age:'25',
-          email:"peter@test.com"
-        },
-         {
-          name:"rok",
-          age:'20',
-          email:"rok@test.com"
-        }
-      ]
-    },
-    {
-      name:"IIT Delhi",
-      city:"Delhi",
-       Website:"www.iit.com",
-        student:[ 
-        {
-          name:"Anil sidhu",
-          age:'29',
-          email:"anil@test.com"
-        },
-         {
-          name:"peter",
-          age:'25',
-          email:"peter@test.com"
-        },
-         {
-          name:"rok",
-          age:'20',
-          email:"rok@test.com"
-        }
-      ]
-    },
-    
-    {
-      name:"KCIET Hisar",
-      city:"Hisar",
-       Website:"www.Kciit.com",
-        student:[ 
-        {
-          name:"Anil sidhu",
-          age:'29',
-          email:"anil@test.com"
-        },
-         {
-          name:"peter",
-          age:'25',
-          email:"peter@test.com"
-        },
-         {
-          name:"rok",
-          age:'20',
-          email:"rok@test.com"
-        }
-      ]
-    },
-    
-  ]
-  return(
+  const [Counter, setCounter] = useState(0);
+  const [data, setData] = useState(0);
+
+  useEffect(() => {
+    callOnce();
+  
+  }, []);
+
+  function callOnce() {
+    console.log("callOnce function called", );
+  }
+const userOne= ()=>{
+  console.log("This Function is run 1");
+  
+}
+  useEffect(() => {
+   userOne();
+  }, []);
+
+  return (
     <div>
-      <h1>Nested Looping With Component</h1>
-      {
-         collegeData.map((college,index)=>(
-          <div key={index}>
-            <College college={college}/>
-          </div>
-         ))
-      }
+      <h1>useEffect Hook</h1>
+      <button onClick={() => setCounter(Counter + 1)}>Counter {Counter}</button>
+      <button onClick={() => setData(data + 1)}>Data {data}</button>
     </div>
-  )
+  );
 }
 
-export default App; 
+export default App;
