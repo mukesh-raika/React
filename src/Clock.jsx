@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 const Clock = ({ color }) => {
-  const [time, setTime] = useState("red");
+  const [time, setTime] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => { setTime(new Date().toLocaleTimeString());

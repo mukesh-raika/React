@@ -1,26 +1,89 @@
-import { useState } from "react";
-import Clock from "./Clock";
+import College from "./College";
 
-function App() {
-  const [color, setColor] = useState("red");
+function App(){
 
-  return (
+  const collegeData=[
+    {
+      name:"IET Alwar",
+      city:"Alwar",
+      Website:"www.iet.com",
+      student:[ 
+        {
+          name:"Anil sidhu",
+          age:'29',
+          email:"anil@test.com"
+        },
+         {
+          name:"peter",
+          age:'25',
+          email:"peter@test.com"
+        },
+         {
+          name:"rok",
+          age:'20',
+          email:"rok@test.com"
+        }
+      ]
+    },
+    {
+      name:"IIT Delhi",
+      city:"Delhi",
+       Website:"www.iit.com",
+        student:[ 
+        {
+          name:"Anil sidhu",
+          age:'29',
+          email:"anil@test.com"
+        },
+         {
+          name:"peter",
+          age:'25',
+          email:"peter@test.com"
+        },
+         {
+          name:"rok",
+          age:'20',
+          email:"rok@test.com"
+        }
+      ]
+    },
+    
+    {
+      name:"KCIET Hisar",
+      city:"Hisar",
+       Website:"www.Kciit.com",
+        student:[ 
+        {
+          name:"Anil sidhu",
+          age:'29',
+          email:"anil@test.com"
+        },
+         {
+          name:"peter",
+          age:'25',
+          email:"peter@test.com"
+        },
+         {
+          name:"rok",
+          age:'20',
+          email:"rok@test.com"
+        }
+      ]
+    },
+    
+  ]
+  return(
     <div>
-      <h1>Digital Clock in React JS</h1>
-
-      <select onChange={(e) => setColor(e.target.value)}>
-        <option value={"red"}>Red</option>
-        <option value={"blue"}>Blue</option>
-        <option value={"green"}>Green</option>
-        <option value={"orange"}>Orange</option>
-        <option value={"gray"}>Gray</option>
-        <option value={"brown"}>Brown</option>
-        <option value={"pink"}>Pink</option>
-      </select>
-
-      <Clock color={color} />
+      <h1>Nested Looping With Component</h1>
+      {
+         collegeData.map((college,index)=>(
+          <div key={index}>
+            <College college={college}/>
+          </div>
+         ))
+      }
     </div>
-  );
+  )
 }
 
-export default App;
+export default App; 
