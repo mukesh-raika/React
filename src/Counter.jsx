@@ -14,12 +14,12 @@ const Counter = ({ count, data}) => {
 
   useEffect(()=>{
     return()=>{
-        console.log("unmount jnfsdjnfj only")
+        console.log("unmount phase only")
     }
   },[])
     useEffect(()=>{
         return ()=>{
-            console.log("unmount junaid only")
+            console.log("unmount phase only")
         }
     },[])
 
