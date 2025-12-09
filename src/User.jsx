@@ -1,8 +1,11 @@
-function User(){
-    return (<div>
-        <h1>
-            Anil Shidu
-        </h1>
-    </div>)
+function User({ displayName,name,getUser}) {
+    // const name=" Anil Sidh" 
+  return (
+    <div>
+      <button onClick={()=>displayName(name)}>Display Name</button>
+      <button onClick={()=>getUser ()}>get User </button>
+    </div>
+  );
 }
- export default User;
+
+export default User;

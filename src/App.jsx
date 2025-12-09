@@ -1,58 +1,23 @@
-import { useRef } from "react";
+import User from "./User";
 
 function App() {
-  const userRef = useRef();
-  const passwordRef = useRef();
 
-  const handleForm = (event) => {
-    event.preventDefault();
-    const user = document.querySelector("#user").value;
-    console.log("Normal Form User:", user);
-  };
+  const displayName=(name)=>{
+    alert(name)
+  }
 
-  const handleFormRef = (event) => {
-    event.preventDefault();
-
-    const user = userRef.current.value;
-    const pass = passwordRef.current.value;
-
-    console.log("Form with useRef User:", user);
-    console.log("Form with useRef Password:", pass);
-  };
-
+  const getUser=()=>{
+    alert("get user function called")
+  } 
   return (
     <>
-      <h1>Uncontrolled Component</h1>
+      <h1>Call parent component function from child component</h1>
 
-      <form action="" method="post" onSubmit={handleForm}>
-        <input type="text" id="user" placeholder="enter user name" />
-        <br /><br />
-        <input type="password" id="password" placeholder="enter user password" />
-        <br /><br />
-        <button>Submit</button>
-      </form>
-
-      <hr />
-
-      <h1>Uncontrolled Component with useRef</h1>
-
-      <form action="" method="post" onSubmit={handleFormRef}>
-        <input
-          type="text"
-          ref={userRef}
-          id="userRef"
-          placeholder="enter user name"
-        />
-        <br /><br />
-        <input
-          type="password"
-          ref={passwordRef}
-          id="passwordRef"
-          placeholder="enter user password"
-        />
-        <br /><br />
-        <button>Submit with Ref</button>
-      </form>
+      <User displayName={displayName} name="anail" getUser={getUser}/>
+      <User displayName={displayName} name="sam"  getUser={getUser} />
+      <User displayName={displayName} name="peter"  getUser={getUser}/>
+      <User displayName={displayName} name="bruce"  getUser={getUser}/>
+    
     </>
   );
 }
