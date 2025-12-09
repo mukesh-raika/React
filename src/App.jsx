@@ -1,44 +1,52 @@
-import styled from "styled-components"
 
-function App(){
-  
-  // const Heading =styled.h1`
-  // color:red;
-  // border:1px solid green;
-  //  border-radius:5px;
-  //  margin:20px;
-  //  padding:20px
-  // `
+import { Button } from "react-bootstrap"
+import { Alert,Navbar,Container,NavDropdown,Nav} from "react-bootstrap"
 
-  const Heading=styled.h1({
-  color:'red',
-  border:'1px solid green',
-   borderRadius:'5px',
-   margin:'20px',
-   padding:'20px',
-  })
-
-  const StyleBtn=styled.button`
-  color:red; 
-  width:130px;
-  height:40px ;
-  margin:20px;
-
-  `
-
+ function App(){
   return(
     <>
-      <h1>Style component with React js</h1>
-      <Heading>Hello heading1</Heading>
-      <Heading>Hello heading2</Heading>
-      <Heading>Hello heading3</Heading>
-      <Heading>Hello heading4</Heading>
-      <Heading>Hello heading5</Heading>
-     <StyleBtn>Login</StyleBtn>
-     <StyleBtn>signup</StyleBtn>
-     <StyleBtn>Bakc </StyleBtn>
-     <StyleBtn>logaut</StyleBtn>
+
+    
+      {/* */}
+    <Navbar expand="lg" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#link">Link</Nav.Link>
+            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  
+
+
+    {/* */}
+    <h1>Add Botstrap in React js </h1>
+   
+    <Alert variant="success">Hello,BT installed</Alert>
+     <Button onClick={()=>alert("bootstrap Button")} variant="danger">bootstrap Button</Button>
+     <Button variant="success">ok</Button>
+     <Button variant="primary">ok</Button>
+     <Button variant="warning">ok</Button>
+     <Button variant="dark">ok</Button>
+     <Button variant="info">ok</Button>
+
+     <button  onClick={()=>alert("shimple  Button")}>Simple button</button>
     </>
   )
-}
-export default App
+ }
+ export default App
