@@ -1,52 +1,38 @@
+import { useRef } from "react"
+function App(){
+const inputRef=useRef(null);
+const Refh1=useRef(null);
 
-import { Button } from "react-bootstrap"
-import { Alert,Navbar,Container,NavDropdown,Nav} from "react-bootstrap"
+const inputHandler=()=>{
+  console.log(inputRef.current);
+  inputRef.current.focus();
+  inputRef.current.style.color="red"
+  inputRef.current.placeholder="enter password"
+   inputRef.current.value="123"
+  
+}
 
- function App(){
+  const toggleHandler=()=>{
+    
+    if(inputRef.current.style.display!="none"){
+     inputRef.current.style.display='none'
+      }else{
+        inputRef.current.style.display='inline'
+      }
+  }
+  const h1handler=()=>{
+    Refh1.current.style.color = "green"
+  }
   return(
     <>
+    <h1>useRef</h1> 
+    <button onClick={toggleHandler}>Toggle</button>
 
-    
-      {/* */}
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  
-
-
-    {/* */}
-    <h1>Add Botstrap in React js </h1>
-   
-    <Alert variant="success">Hello,BT installed</Alert>
-     <Button onClick={()=>alert("bootstrap Button")} variant="danger">bootstrap Button</Button>
-     <Button variant="success">ok</Button>
-     <Button variant="primary">ok</Button>
-     <Button variant="warning">ok</Button>
-     <Button variant="dark">ok</Button>
-     <Button variant="info">ok</Button>
-
-     <button  onClick={()=>alert("shimple  Button")}>Simple button</button>
+    <input ref={inputRef} type="text" placeholder="Enter user name"/>
+    <button onClick={inputHandler}>Focus on Input field</button>
+    <h1 ref={Refh1}>code stap by stap </h1>
+    <button onClick={h1handler}>Handler</button>
     </>
   )
- }
- export default App
+}
+export default App; 
