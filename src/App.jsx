@@ -1,38 +1,60 @@
-import { useRef } from "react"
-function App(){
-const inputRef=useRef(null);
-const Refh1=useRef(null);
+import { useRef } from "react";
 
-const inputHandler=()=>{
-  console.log(inputRef.current);
-  inputRef.current.focus();
-  inputRef.current.style.color="red"
-  inputRef.current.placeholder="enter password"
-   inputRef.current.value="123"
-  
-}
+function App() {
+  const userRef = useRef();
+  const passwordRef = useRef();
 
-  const toggleHandler=()=>{
-    
-    if(inputRef.current.style.display!="none"){
-     inputRef.current.style.display='none'
-      }else{
-        inputRef.current.style.display='inline'
-      }
-  }
-  const h1handler=()=>{
-    Refh1.current.style.color = "green"
-  }
-  return(
+  const handleForm = (event) => {
+    event.preventDefault();
+    const user = document.querySelector("#user").value;
+    console.log("Normal Form User:", user);
+  };
+
+  const handleFormRef = (event) => {
+    event.preventDefault();
+
+    const user = userRef.current.value;
+    const pass = passwordRef.current.value;
+
+    console.log("Form with useRef User:", user);
+    console.log("Form with useRef Password:", pass);
+  };
+
+  return (
     <>
-    <h1>useRef</h1> 
-    <button onClick={toggleHandler}>Toggle</button>
+      <h1>Uncontrolled Component</h1>
 
-    <input ref={inputRef} type="text" placeholder="Enter user name"/>
-    <button onClick={inputHandler}>Focus on Input field</button>
-    <h1 ref={Refh1}>code stap by stap </h1>
-    <button onClick={h1handler}>Handler</button>
+      <form action="" method="post" onSubmit={handleForm}>
+        <input type="text" id="user" placeholder="enter user name" />
+        <br /><br />
+        <input type="password" id="password" placeholder="enter user password" />
+        <br /><br />
+        <button>Submit</button>
+      </form>
+
+      <hr />
+
+      <h1>Uncontrolled Component with useRef</h1>
+
+      <form action="" method="post" onSubmit={handleFormRef}>
+        <input
+          type="text"
+          ref={userRef}
+          id="userRef"
+          placeholder="enter user name"
+        />
+        <br /><br />
+        <input
+          type="password"
+          ref={passwordRef}
+          id="passwordRef"
+          placeholder="enter user password"
+        />
+        <br /><br />
+        <button>Submit with Ref</button>
+      </form>
     </>
-  )
+  );
 }
-export default App; 
+
+export default App;
