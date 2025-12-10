@@ -1,23 +1,30 @@
-//  let guest=0
+import { useState } from "react";
+
 function App(){
-
-  return( 
-    <>
-    <h1>Keeping Component pure</h1>
-     <Cup guest={1}/>
-     <Cup guest={3} />
-     <Cup guest={5} />
+  const[users,setUsers]=useState([]);
+  const[user,setUser]=useState('');
+  const hndleAddUsers=()=>{
+    setUsers([...users,user])
+  }
+  const total=users.length; 
+  const last=users[users.length-1]
+  const unique= [...new Set(users)].length
     
-    </>
-  )
-}
 
-const Cup=({guest})=>{
-  // guest=guest+1;
   return(
-    <h1>we have {guest}guest and we have to make {guest} cup of tea </h1>
+    <div>
+      <h2>Total  User : {total}</h2>
+      <h2>Last  Usee : {last}</h2>
+      <h2>Unique Totle User : {unique} </h2>
+
+    <input type="text" onChange={(event)=>setUser(event.target.value)} placeholder="add new user" />
+    <button onClick={hndleAddUsers}>Add User</button>
+    {
+      users.map((item,index)=>(
+       <h4 key={index}>{ item}</h4>
+      ))
+    }
+    </div>
   )
 }
-
-
 export default App;
