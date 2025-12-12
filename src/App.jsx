@@ -1,47 +1,41 @@
-import { useActionState } from "react";
+import { useId } from "react"
 
-export default function App(){
-
-  const handleSubmit=async(previousData,formData)=>{
-    let name=formData.get('name');
-    let password=formData.get('password');
-
-    await new Promise(res=>setTimeout(res,2000))
-  // console.log("handleSubmit called",name,password);
-  
-  if(name  && password){
-    return{message:"Data Submit",name,password} 
-  }else{
-  return{
-    error:'failed to Submit. Enter proper data',name,password}
-    
-  }
-    
-  }
-  const [data,action,pending]=useActionState(handleSubmit,undefined)
-  console.log(data);
+export default function App() {
   
   return(
-    <div>
-      <h1>useActionState Hook in React js</h1>
-      <form action={action}>
-        <input  defaultValue={data?.name} type="text"placeholder="enter name" name="name"/>
-        <br/><br/>
-        <input defaultValue={data?.name} type="password"placeholder="enter password" name="password"/>
-        <br/><br/>
-        <button disabled={pending}>Submit Data</button>
-        <br />
-        <br/>
-      
-      </form>
-        {
-         data?.error && <span style={{color:'red'}}>{data?.error}</span>
-        }
-        {
-          data?.message &&<span style={{color:'green'}}>{data?.message}</span>
-        }
-        <h3>Name :{data?.name}</h3>
-        <h3>password:{data?.password}</h3>
-    </div>
-  );
+   <div>
+    <UserForm/>
+    <hr/>
+     <UserForm/>
+   </div>
+  )
+
 }
+
+ function UserForm() {
+  const user =useId();
+ 
+  return(
+    <div>
+     <form action="">
+      <label htmlFor={user+"name"}>Enter User Name</label>
+      <input id={user+"name"} type="text" placeholder="enter name" />
+      <br/>
+      <br/>      
+      <label htmlFor={user+"password"}>Enter User Password</label>
+      <input id={user+"password"}type="text" placeholder="enter password" />
+      <br/>
+      <br/>
+      <label htmlFor={user+"skills"}>Enter User Skills</label>
+      <input id={user+"skills"}type="text"placeholder="enter skills"/>
+      <br/>
+      <br/>
+      <input id={user+"terms"}type="checkbox" placeholder="enter skills"/>
+      <label htmlFor={user+"terms"}>Terms and Condition</label>
+     </form>
+    </div>
+  )
+
+}
+
+
