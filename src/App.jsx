@@ -1,59 +1,61 @@
 import { useState } from "react";
 
-export default function App() {
+export default function App(){
 
-  const[data,setData]=useState({ 
-    name:'Anil',
-    address:{
-    city:'Delhi',
-    country:'India '
-    }
-  })
-  
-  const handleName=(val)=>{
-    data.name=val
-    // let tempData =data;
+  const [data,setData]=useState([
+    'anil','sam','peter','tony'
+  ]);
 
-    setData({...data})
-    
-    
-   
-  }
-  const handleCity=(city)=>{
-    data.address.city=city
-   
-    setData({...data,address:{...data.address,city,}})
-    
-    
-    
-  }
+  const [dataDetails,setDataDetails]=useState([
+    { name:'anil', age:29 },  
+    { name:'sam', age:25 },
+    { name:'peter', age:33 },
+  ]);
 
-  const handleCountry=(country)=>{
-    data.address.country=country
-   
-    setData({...data,address:{...data.address,country,}})
-    
-    
-    
-  }
+  // last user name update
+  const handleUser=(name)=>{
+    setData(prev=>{
+      const newData = [...prev];
+      newData[newData.length - 1] = name;
+      return newData;
+    });
+  };
+
+  // last user age update
+  const handleAge=(age)=>{
+    setDataDetails(prev=>{
+      const newDetails = [...prev];
+      newDetails[newDetails.length - 1] = {
+        ...newDetails[newDetails.length - 1],
+        age: age
+      };
+      return newDetails;
+    });
+  };
+
   return(
     <div>
-      <h1>Updating Object in State</h1>
-      <br/>
-      
-      <input type="text" placeholder="update name" 
-      onChange={(event)=>handleName(event.target.value)}/> 
-      <input type="text" placeholder="update city" 
-      onChange={(event)=>handleCity(event.target.value)}/> 
-      <input type="text" placeholder="Enter Your Country" onChange={(event)=>handleCountry(event.target.value)}   />
-    
-      
-      
-      <br/>
-      <br />
-      <h2>Name:{data.name}</h2>
-      <h2>City:{data.address.city}</h2>
-      <h2>Country:{data.address.country}</h2>
+      <h1>Updating Array in useState</h1>
+
+      <input type="text" placeholder="enter last user name"
+        onChange={(e)=>handleUser(e.target.value)}
+      />
+
+      {data.map((item,index)=>(
+        <h3 key={index}>{item}</h3>
+      ))}
+
+      <hr/>
+
+      <input type="text" placeholder="enter last user age"
+        onChange={(e)=>handleAge(e.target.value)}
+      />
+
+      {dataDetails.map((item,index)=>(
+        <h4 key={index}>{item.name}, {item.age}</h4>
+      ))}
+
     </div>
-  )
+  );
 }
+
