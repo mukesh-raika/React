@@ -1,61 +1,47 @@
-import { useState } from "react";
+import { useActionState } from "react";
 
 export default function App(){
 
-  const [data,setData]=useState([
-    'anil','sam','peter','tony'
-  ]);
+  const handleSubmit=async(previousData,formData)=>{
+    let name=formData.get('name');
+    let password=formData.get('password');
 
-  const [dataDetails,setDataDetails]=useState([
-    { name:'anil', age:29 },  
-    { name:'sam', age:25 },
-    { name:'peter', age:33 },
-  ]);
-
-  // last user name update
-  const handleUser=(name)=>{
-    setData(prev=>{
-      const newData = [...prev];
-      newData[newData.length - 1] = name;
-      return newData;
-    });
-  };
-
-  // last user age update
-  const handleAge=(age)=>{
-    setDataDetails(prev=>{
-      const newDetails = [...prev];
-      newDetails[newDetails.length - 1] = {
-        ...newDetails[newDetails.length - 1],
-        age: age
-      };
-      return newDetails;
-    });
-  };
-
+    await new Promise(res=>setTimeout(res,2000))
+  // console.log("handleSubmit called",name,password);
+  
+  if(name  && password){
+    return{message:"Data Submit",name,password} 
+  }else{
+  return{
+    error:'failed to Submit. Enter proper data',name,password}
+    
+  }
+    
+  }
+  const [data,action,pending]=useActionState(handleSubmit,undefined)
+  console.log(data);
+  
   return(
     <div>
-      <h1>Updating Array in useState</h1>
-
-      <input type="text" placeholder="enter last user name"
-        onChange={(e)=>handleUser(e.target.value)}
-      />
-
-      {data.map((item,index)=>(
-        <h3 key={index}>{item}</h3>
-      ))}
-
-      <hr/>
-
-      <input type="text" placeholder="enter last user age"
-        onChange={(e)=>handleAge(e.target.value)}
-      />
-
-      {dataDetails.map((item,index)=>(
-        <h4 key={index}>{item.name}, {item.age}</h4>
-      ))}
-
+      <h1>useActionState Hook in React js</h1>
+      <form action={action}>
+        <input  defaultValue={data?.name} type="text"placeholder="enter name" name="name"/>
+        <br/><br/>
+        <input defaultValue={data?.name} type="password"placeholder="enter password" name="password"/>
+        <br/><br/>
+        <button disabled={pending}>Submit Data</button>
+        <br />
+        <br/>
+      
+      </form>
+        {
+         data?.error && <span style={{color:'red'}}>{data?.error}</span>
+        }
+        {
+          data?.message &&<span style={{color:'green'}}>{data?.message}</span>
+        }
+        <h3>Name :{data?.name}</h3>
+        <h3>password:{data?.password}</h3>
     </div>
   );
 }
-
