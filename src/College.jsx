@@ -1,30 +1,10 @@
-import { cloneElement } from "react";
-import Student from "./Student";
+import ClassComponent from "./ClassComponent";
 
-const College=({college})=>{
-         console.log(cloneElement); 
-
+export default function College(){
     return(
-        <div style={{
-            backgroundColor:"#ccc",
-            padding:"20px",
-            borderBottom:"2px solid #000",
-            margin:"20px",
-            borderRadius:"10px",
-        }}>
-        <h1>Name:{college.name}</h1>
-            <ul>
-              <li>
-                <h3>City:{college.city}</h3>
-              </li>
-              <li>
-                <h3>Website:{college.Website}</h3>
-              </li> 
-              <li>
-                <Student student={college.student} />
-              </li>
-            </ul>
-        </div> 
+        <div style={{backgroundColor:"orange",padding:10}}>
+            <h1>College component</h1>
+            <ClassComponent/>
+        </div>
     )
 }
-export default College;

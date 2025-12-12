@@ -1,17 +1,10 @@
-const Student = ({student}) => {
+import Subject from "./Subject";
+
+export default function Student(){
     return(
-        <div>
-            <h3>Students</h3>
-                {
-                     student.map((student)=>(
-                       <ul>
-                        <li>Name:{student.name}</li>
-                       </ul>
-
-                    ))
-                }
-
+        <div style={{backgroundColor:"green",padding:10}}>
+            <h1> Student</h1>
+           <Subject />
         </div>
     )
-}
-export default Student;
+}   
