@@ -1,24 +1,29 @@
-import { useState } from "react";
-import College from "./College";
-import { SubjectContext } from "./ContextData";
-import Subject from "./Subject";
+import UesToggle from "./UseToggle"
 
 export default function App(){
-    const[subject,setSubject]=useState('')
-    return(
-        <div style={{backgroundColor:"yellow",padding:10}}>
-            <SubjectContext.Provider value={subject}>
-                <select onChange={(event)=>setSubject(event.target. value)}>
-                    <option value="">select Subject </option>
-                    <option value="Maths">Maths </option>
-                    <option value="History">History </option>
-                    <option value="English">English </option>
-                    <option value="Hindi">Hindi </option>
+    const [value,toggleValue]=UesToggle(true)
 
-                </select>
-                <h1>Context</h1>
-                <College/>
-            </SubjectContext.Provider>
-        </div>
+    const  [data,setData]=UesToggle(true);  
+
+    console.log("val----",value);
+    
+    return(
+        <div>
+            <button onClick={toggleValue}>Toggle Heading</button>
+            <button onClick={()=>toggleValue(false)}>Hide Heading</button>
+            <button onClick={()=>toggleValue(true)}>Show Heading</button>
+
+            {
+                value? <h1>Custom Hooks in React Js</h1>:null
+            }
+            <hr/>
+            <button onClick={setData}>Toggle Heding</button>
+            <button onClick={()=>setData(false)}>Hide Heading</button>
+            <button onClick={()=>setData(true)}>Show Heading</button>
+
+            {
+                data? <h1>Second Heading</h1>:null
+            }
+        </div>  
     )
 }
